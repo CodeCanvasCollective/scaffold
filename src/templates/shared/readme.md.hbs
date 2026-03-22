@@ -1,0 +1,43 @@
+# {{name}}
+
+> Generated with [scaffold](https://github.com/CodeCanvasCollective/scaffold)
+
+## Getting Started
+
+{{#if (eq framework "fastapi")}}
+```bash
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+{{else}}
+```bash
+{{packageManager}} install
+{{packageManager}} run dev
+```
+{{/if}}
+
+## Scripts
+
+{{#if (eq framework "fastapi")}}
+| Command | Description |
+|---------|-------------|
+| `uvicorn app.main:app --reload` | Start development server |
+{{#if features.testing}}
+| `pytest` | Run tests |
+{{/if}}
+{{else}}
+| Command | Description |
+|---------|-------------|
+| `{{packageManager}} run dev` | Start development server |
+| `{{packageManager}} run build` | Build for production |
+{{#if features.testing}}
+| `{{packageManager}} run test` | Run tests |
+{{/if}}
+{{#if features.eslint}}
+| `{{packageManager}} run lint` | Lint code |
+{{/if}}
+{{/if}}
+
+## License
+
+MIT

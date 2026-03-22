@@ -1,0 +1,30 @@
+services:
+  app:
+    build: .
+    ports:
+{{#if (eq framework "fastapi")}}
+      - '8000:8000'
+{{else}}
+      - '3000:3000'
+{{/if}}
+    environment:
+      - NODE_ENV=production
+{{#if (eq variant "with-prisma")}}
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/{{name}}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: {{name}}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+{{/if}}

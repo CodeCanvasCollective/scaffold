@@ -1,0 +1,48 @@
+name: Template Test
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Weekly on Monday at 6am UTC
+  workflow_dispatch:
+
+jobs:
+  test-templates:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        template: [react, nextjs, angular, express, fastapi]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build CLI
+        run: npm run build
+
+      - name: Generate ${{ matrix.template }} project
+        run: node dist/index.js create test-${{ matrix.template }} --${{ matrix.template }} --yes
+
+      - name: Verify generated files exist
+        run: |
+          ls -la test-${{ matrix.template }}
+          test -f test-${{ matrix.template }}/package.json || test -f test-${{ matrix.template }}/pyproject.toml
+
+      - name: Install generated project dependencies
+        if: matrix.template != 'fastapi'
+        run: |
+          cd test-${{ matrix.template }}
+          npm install
+
+      - name: Build generated project
+        if: matrix.template != 'fastapi' && matrix.template != 'angular'
+        run: |
+          cd test-${{ matrix.template }}
+          npm run build

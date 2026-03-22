@@ -1,0 +1,35 @@
+name: New Template Request
+description: Request a new framework template
+labels: ['new-template']
+body:
+  - type: input
+    id: framework
+    attributes:
+      label: Framework Name
+      description: "e.g., Vue.js, Svelte, Fastify"
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Project Type
+      options:
+        - Frontend
+        - Backend
+        - Full-Stack
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Template Description
+      description: What should the template include?
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Links to the framework docs or similar scaffolding tools
+    validations:
+      required: false

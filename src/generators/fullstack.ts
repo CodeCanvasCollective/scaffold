@@ -4,8 +4,7 @@ import { ReactGenerator } from './react.js';
 import { NextjsGenerator } from './nextjs.js';
 import { AngularGenerator } from './angular.js';
 import { ExpressGenerator } from './express.js';
-import { spinner, success, createDir } from '../utils/index.js';
-import { renderAndWrite, getTemplatesDir } from '../utils/file.js';
+import { spinner, success, createDir, writeFile } from '../utils/index.js';
 import type { ProjectConfig } from '../types/index.js';
 
 export class FullstackGenerator extends BaseGenerator {
@@ -29,9 +28,8 @@ export class FullstackGenerator extends BaseGenerator {
       gitInit: false,
     };
 
-    const FrontendGenerator = this.getFrontendGeneratorClass();
-    const frontendGen = new FrontendGenerator(frontendConfig, webDir);
-    await frontendGen.generateBase();
+    const frontendGen = this.createFrontendGenerator(frontendConfig, webDir);
+    await frontendGen.generate();
 
     // Generate backend in apps/api
     const backendConfig: ProjectConfig = {
@@ -42,7 +40,7 @@ export class FullstackGenerator extends BaseGenerator {
     };
 
     const backendGen = new ExpressGenerator(backendConfig, apiDir);
-    await backendGen.generateBase();
+    await backendGen.generate();
 
     // Write root package.json for workspaces
     const rootPkgPath = path.join(this.targetDir, 'package.json');
@@ -57,19 +55,18 @@ export class FullstackGenerator extends BaseGenerator {
         test: 'npm run --workspaces test',
       },
     };
-    const { writeFile } = await import('../utils/file.js');
     await writeFile(rootPkgPath, JSON.stringify(rootPkg, null, 2) + '\n');
   }
 
-  private getFrontendGeneratorClass() {
-    switch (this.config.framework) {
+  private createFrontendGenerator(config: ProjectConfig, targetDir: string): BaseGenerator {
+    switch (config.framework) {
       case 'nextjs':
-        return NextjsGenerator;
+        return new NextjsGenerator(config, targetDir);
       case 'angular':
-        return AngularGenerator;
+        return new AngularGenerator(config, targetDir);
       case 'react':
       default:
-        return ReactGenerator;
+        return new ReactGenerator(config, targetDir);
     }
   }
 }

@@ -3,7 +3,14 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import { runPrompts } from '../prompts/index.js';
 import { createGenerator } from '../generators/index.js';
-import { validateProjectName, validateDirectory, success, error, newLine, banner } from '../utils/index.js';
+import {
+  validateProjectName,
+  validateDirectory,
+  success,
+  error,
+  newLine,
+  banner,
+} from '../utils/index.js';
 import type { ProjectConfig } from '../types/index.js';
 import { DEFAULT_CONFIG } from '../types/index.js';
 
@@ -94,7 +101,13 @@ async function handleCreate(projectName: string, options: CreateOptions): Promis
 }
 
 function hasFrameworkFlag(options: CreateOptions): boolean {
-  return !!(options.react || options.nextjs || options.angular || options.express || options.fastapi);
+  return !!(
+    options.react ||
+    options.nextjs ||
+    options.angular ||
+    options.express ||
+    options.fastapi
+  );
 }
 
 function buildQuickConfig(projectName: string, options: CreateOptions): ProjectConfig {

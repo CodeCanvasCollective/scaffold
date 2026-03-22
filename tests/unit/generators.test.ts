@@ -109,7 +109,9 @@ describe('ExpressGenerator', () => {
     expect(await fs.pathExists(path.join(targetDir, 'tsconfig.json'))).toBe(true);
     expect(await fs.pathExists(path.join(targetDir, 'src', 'index.ts'))).toBe(true);
     expect(await fs.pathExists(path.join(targetDir, 'src', 'routes', 'index.ts'))).toBe(true);
-    expect(await fs.pathExists(path.join(targetDir, 'src', 'middleware', 'errorHandler.ts'))).toBe(true);
+    expect(await fs.pathExists(path.join(targetDir, 'src', 'middleware', 'errorHandler.ts'))).toBe(
+      true,
+    );
 
     const pkgJson = await fs.readJSON(path.join(targetDir, 'package.json'));
     expect(pkgJson.name).toBe('my-api');

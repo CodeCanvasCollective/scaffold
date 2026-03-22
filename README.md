@@ -24,13 +24,13 @@ npx @codecanvascollective/scaffold create my-app --express
 
 ## Supported Frameworks
 
-| Framework | Type | Variants |
-|-----------|------|----------|
-| React + Vite | Frontend | Base, Tailwind, shadcn/ui |
-| Next.js (App Router) | Frontend | Base, NextAuth, Prisma |
-| Angular 18 | Frontend | Base |
-| Express.js | Backend | Base, Prisma |
-| FastAPI | Backend | Base |
+| Framework            | Type     | Variants                  |
+| -------------------- | -------- | ------------------------- |
+| React + Vite         | Frontend | Base, Tailwind, shadcn/ui |
+| Next.js (App Router) | Frontend | Base, NextAuth, Prisma    |
+| Angular 18           | Frontend | Base                      |
+| Express.js           | Backend  | Base, Prisma              |
+| FastAPI              | Backend  | Base                      |
 
 ## Features
 

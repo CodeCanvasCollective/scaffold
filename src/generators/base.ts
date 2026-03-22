@@ -1,7 +1,14 @@
 import path from 'node:path';
 import fs from 'fs-extra';
 import { execSync } from 'node:child_process';
-import { createDir, renderAndWrite, getTemplatesDir, spinner, success, debug } from '../utils/index.js';
+import {
+  createDir,
+  renderAndWrite,
+  getTemplatesDir,
+  spinner,
+  success,
+  debug,
+} from '../utils/index.js';
 import type { ProjectConfig } from '../types/index.js';
 import type { GeneratorResult } from '../types/generator.js';
 
@@ -141,10 +148,7 @@ export abstract class BaseGenerator {
     }
   }
 
-  protected async renderTemplateFile(
-    templatePath: string,
-    outputPath: string,
-  ): Promise<void> {
+  protected async renderTemplateFile(templatePath: string, outputPath: string): Promise<void> {
     const templateData = this.getTemplateData();
 
     if (await fs.pathExists(templatePath)) {

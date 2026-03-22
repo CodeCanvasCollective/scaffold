@@ -21,7 +21,8 @@ export function getTemplatesDir(): string {
   // When bundled with tsup, __dirname is dist/ → go up 1 level to project root
   // When running unbundled (vitest), __dirname is src/utils/ → go up 2 levels to project root
   // In both cases, templates live at <projectRoot>/src/templates
-  const isBundled = __dirname.replace(/\\/g, '/').endsWith('/dist') ||
+  const isBundled =
+    __dirname.replace(/\\/g, '/').endsWith('/dist') ||
     __dirname.replace(/\\/g, '/').includes('/dist/');
   const projectRoot = isBundled
     ? path.resolve(__dirname, '..')

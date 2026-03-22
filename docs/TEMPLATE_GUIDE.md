@@ -33,30 +33,27 @@ Templates use [Handlebars](https://handlebarsjs.com/) with `.hbs` extension.
 Every template receives the full `ProjectConfig` object:
 
 ```handlebars
-{
-  "name": "{{name}}",
-  "version": "0.1.0"
-}
+{ "name": "{{name}}", "version": "0.1.0" }
 ```
 
 ### Conditionals
 
 ```handlebars
 {{#if features.testing}}
-"test": "vitest run",
+  "test": "vitest run",
 {{/if}}
 ```
 
 ### Custom Helpers
 
-| Helper | Usage | Description |
-|--------|-------|-------------|
-| `eq` | `{{#if (eq framework "react")}}` | Equality check |
-| `neq` | `{{#if (neq framework "fastapi")}}` | Not-equal check |
-| `or` | `{{#if (or features.eslint features.prettier)}}` | Logical OR |
-| `and` | `{{#if (and features.tailwind features.shadcn)}}` | Logical AND |
-| `year` | `{{year}}` | Current year |
-| `lowercase` | `{{lowercase name}}` | Lowercase string |
+| Helper      | Usage                                             | Description      |
+| ----------- | ------------------------------------------------- | ---------------- |
+| `eq`        | `{{#if (eq framework "react")}}`                  | Equality check   |
+| `neq`       | `{{#if (neq framework "fastapi")}}`               | Not-equal check  |
+| `or`        | `{{#if (or features.eslint features.prettier)}}`  | Logical OR       |
+| `and`       | `{{#if (and features.tailwind features.shadcn)}}` | Logical AND      |
+| `year`      | `{{year}}`                                        | Current year     |
+| `lowercase` | `{{lowercase name}}`                              | Lowercase string |
 
 ## Adding a New Framework
 

@@ -2,12 +2,7 @@ export type ProjectType = 'frontend' | 'backend' | 'fullstack';
 
 export type FrameworkType = 'react' | 'nextjs' | 'angular' | 'express' | 'fastapi';
 
-export type VariantType =
-  | 'base'
-  | 'with-tailwind'
-  | 'with-shadcn'
-  | 'with-auth'
-  | 'with-prisma';
+export type VariantType = 'base' | 'with-tailwind' | 'with-shadcn' | 'with-auth' | 'with-prisma';
 
 export type PackageManager = 'npm' | 'yarn' | 'pnpm';
 

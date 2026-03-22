@@ -6,7 +6,7 @@ body:
     id: framework
     attributes:
       label: Framework Name
-      description: "e.g., Vue.js, Svelte, Fastify"
+      description: 'e.g., Vue.js, Svelte, Fastify'
     validations:
       required: true
   - type: dropdown

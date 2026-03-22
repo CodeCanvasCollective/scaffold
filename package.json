@@ -1,0 +1,70 @@
+{
+  "name": "@codecanvascollective/scaffold",
+  "version": "0.1.0",
+  "description": "CLI tool for scaffolding modern full-stack projects",
+  "type": "module",
+  "bin": {
+    "scaffold": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src/",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepublishOnly": "npm run build && npm test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.2.0",
+    "handlebars": "^4.7.8",
+    "inquirer": "^9.2.0",
+    "ora": "^8.0.0"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.3.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^2.0.0"
+  },
+  "keywords": [
+    "scaffold",
+    "cli",
+    "generator",
+    "boilerplate",
+    "react",
+    "nextjs",
+    "angular",
+    "express",
+    "fastapi",
+    "starter-kit",
+    "project-generator",
+    "codecanvascollective"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeCanvasCollective/scaffold"
+  },
+  "homepage": "https://codecanvascollective.com/scaffold",
+  "bugs": "https://github.com/CodeCanvasCollective/scaffold/issues",
+  "license": "MIT",
+  "author": "CodeCanvas Collective <info@codecanvascollective.com>",
+  "files": [
+    "dist",
+    "src/templates"
+  ]
+}

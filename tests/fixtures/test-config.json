@@ -1,0 +1,19 @@
+{
+  "type": "frontend",
+  "framework": "react",
+  "variant": "base",
+  "features": {
+    "typescript": true,
+    "eslint": true,
+    "prettier": true,
+    "tailwind": false,
+    "shadcn": false,
+    "testing": true,
+    "githubActions": false,
+    "docker": false,
+    "husky": false,
+    "envExample": false
+  },
+  "packageManager": "npm",
+  "gitInit": false
+}

@@ -10,7 +10,7 @@ export function createCli(): Command {
   program
     .name('scaffold')
     .description('CLI tool for scaffolding modern full-stack projects')
-    .version('0.1.0')
+    .version('0.1.1')
     .option('--verbose', 'Enable verbose output')
     .hook('preAction', (thisCommand) => {
       const opts = thisCommand.opts();
